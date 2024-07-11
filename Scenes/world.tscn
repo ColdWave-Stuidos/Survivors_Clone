@@ -33,5 +33,5 @@ spawns = Array[ExtResource("5_4njs4")]([SubResource("Resource_1t0gj")])
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="ExpGem" parent="Loot" instance=ExtResource("6_de1uv")]
-position = Vector2(40, -32)
-exp_gain = 500
+position = Vector2(150, -78)
+exp_gain = 200

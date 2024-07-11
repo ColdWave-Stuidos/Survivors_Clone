@@ -1,14 +1,8 @@
-res://Player/player.tscn
-res://Player/player.gd
-res://Player/Attacks/javelin.tscn
-res://Player/Attacks/javelin.gd
 res://Scenes/world.tscn
+res://Player/player.tscn
 res://Enemies/enemy.tscn
 res://Utility/item_option.tscn
 res://Utility/upgrade_db.tscn
-res://Utility/upgrade_db.gd
-res://Utility/item_option.gd
 res://Player/Attacks/ice_spear.tscn
-res://Player/Attacks/ice_spear.gd
+res://Player/Attacks/javelin.tscn
 res://Player/Attacks/tornado.tscn
-res://Player/Attacks/tornado.gd
