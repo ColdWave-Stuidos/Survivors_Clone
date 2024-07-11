@@ -19,6 +19,12 @@ var collected_exp = 0 # How much player has collected
 @onready var upgradeOptions = get_node("%UpgradeOptions")
 @onready var itemOptions = preload("res://Utility/item_option.tscn")
 @onready var soundLevelUp = get_node("%sound_levelup")
+@onready var healthBar = get_node("%HealthBar")
+@onready var lblTimer = get_node("%lblTimer")
+@onready var collectedWeapons = get_node("%CollectedWeapons")
+@onready var collectedUpgrades = get_node("%CollectedUpgrades")
+@onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
+var time = 0
 
 # Attacks
 var icespear = preload("res://Player/Attacks/ice_spear.tscn")
@@ -66,6 +72,7 @@ func _ready():
 	upgrade_character("icespear1") # Starting weapon
 	attack()
 	set_expBar(experience, calculate_exp_cap())
+	_on_hurt_box_hurt(0,0,0) # Sets the HP Bar at the start. 0s so player takes no damage.
 
 # Function for the game loop
 func _physics_process(delta):
@@ -118,7 +125,8 @@ func attack():
 # Funciton to hurt the player upon contact.
 func _on_hurt_box_hurt(damage, _angle, _knockback): # The function still needs the arguments, but we don't want to knock back the player
 	hp -= clamp(damage - armor, 1.0, 999) # This guarantees you will always take 1 damage.
-	print(hp)
+	healthBar.max_value = maxhp
+	healthBar.value = hp
 
 # Think of this as "loading the ammo"
 func _on_ice_spear_timer_timeout():
@@ -296,6 +304,9 @@ func upgrade_character(upgrade):
 			hp += 20
 			hp = clamp(hp,0,maxhp) # stops healing when you hit the max HP
 	
+	# Update the GUI
+	adjust_gui_collection(upgrade)
+	
 	# Refresh your attacks
 	attack()
 	
@@ -340,3 +351,30 @@ func get_random_item():
 	else:
 		# If there are no more applicable upgrades, it will give us food, since that's the default.
 		return null
+		
+# Function for the game timer
+func change_time(argtime = 0):
+	time = argtime
+	var get_minutes = int(time/60.0)
+	var get_seconds = time % 60
+	if get_minutes < 10:
+		get_minutes = str(0, get_minutes)
+	if get_seconds < 10:
+		get_seconds = str(0, get_seconds)
+	lblTimer.text = str(get_minutes,":",get_seconds)
+
+func adjust_gui_collection(upgrade):
+	var get_upgraded_displaynames = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if get_type != "item":
+		var get_collected_displaynames = []
+		for i in collected_upgrades:
+			get_collected_displaynames.append(UpgradeDb.UPGRADES[i]["displayname"])
+		if not get_upgraded_displaynames in get_collected_displaynames:
+			var new_item = itemContainer.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					collectedWeapons.add_child(new_item)
+				"upgrade":
+					collectedUpgrades.add_child(new_item)

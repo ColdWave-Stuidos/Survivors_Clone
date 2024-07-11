@@ -15,6 +15,9 @@ I am using his tutorial series (found [here](https://www.youtube.com/playlist?li
   - These basic enemies deal 1 hp worth of damage as they bump into the player.
 - Basic Attacks
 - Leveling Up and choosing upgrades
+- Added a health bar and the player can now visually lose health.
+- Added a timer to show how long you have been in the game.
+- Added a GUI for what items the player currently has collected.
 
 ### Attack List
 - Ice Spear

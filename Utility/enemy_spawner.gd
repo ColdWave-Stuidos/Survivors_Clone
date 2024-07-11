@@ -6,6 +6,11 @@ extends Node2D
 
 var time = 0
 
+signal changetime(time)
+
+func _ready():
+	connect("changetime", Callable(player, "change_time"))
+
 # Timer is run every second.
 func _on_timer_timeout():
 	# Add one second to the timer
@@ -35,6 +40,8 @@ func _on_timer_timeout():
 					add_child(enemy_spawn)
 					counter += 1
 					
+	emit_signal("changetime", time)
+
 func get_random_position():
 	# This rectangle is the current view the player sees, with some extra range on it.
 	var viewport_rect = get_viewport_rect().size * randf_range(1.1, 1.4)
