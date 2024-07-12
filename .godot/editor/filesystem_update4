@@ -12,3 +12,9 @@ res://Utility/enemy_spawner.gd
 res://Player/GUI/item_container.tscn
 res://Player/GUI/item_container.gd
 res://Player/Attacks/tornado.gd
+res://Enemies/enemy_kobold_weak.tscn
+res://Enemies/enemy.gd
+res://Enemies/enemy_kobold_strong.tscn
+res://Enemies/enemy_cyclops.tscn
+res://Enemies/enemy_juggernaut.tscn
+res://Enemies/enemy_amoeba.tscn
