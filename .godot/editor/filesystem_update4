@@ -12,3 +12,6 @@ res://Utility/enemy_spawner.gd
 res://Enemies/enemy_kobold_weak.tscn
 res://Utility/upgrade_db.tscn
 res://README.md
+res://Title_Screen/menu.gd
+res://Title_Screen/menu.tscn
+res://Audio/Music/snd_music.gd

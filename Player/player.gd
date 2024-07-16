@@ -72,6 +72,9 @@ var javelin_level = 0
 # To hold the enemies that are close to the player.
 var close_enemies = [] 
 
+# Signals
+signal playerdeath
+
 
 # Load this up when the game starts
 func _ready():
@@ -391,6 +394,7 @@ func adjust_gui_collection(upgrade):
 
 func death():
 	deathPanel.visible = true
+	emit_signal("playerdeath")
 	get_tree().paused = true
 	var tween = deathPanel.create_tween()
 	tween.tween_property(deathPanel, "position", Vector2(220, 50), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
@@ -402,3 +406,9 @@ func death():
 	else:
 		lblResult.text = "You Lose!"
 		sndLose.play()
+
+
+func _on_btn_menu_click_end():
+	get_tree().paused = false
+	var mainMenu = "res://Title_Screen/menu.tscn"
+	var _level = get_tree().change_scene_to_file(mainMenu)

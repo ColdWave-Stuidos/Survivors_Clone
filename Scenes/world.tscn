@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmxwqyl5cen1g"]
+[gd_scene load_steps=22 format=3 uid="uid://cmxwqyl5cen1g"]
 
 [ext_resource type="Texture2D" uid="uid://b6jns8m8mi0aj" path="res://Textures/dirt_full_new.png" id="1_88ck4"]
 [ext_resource type="PackedScene" uid="uid://byndjmkg7yavi" path="res://Player/player.tscn" id="2_n1vwo"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://co0gauxhba7m3" path="res://Enemies/enemy_cyclops.tscn" id="7_xr8ta"]
 [ext_resource type="PackedScene" uid="uid://dbdptaw2g2qw" path="res://Enemies/enemy_juggernaut.tscn" id="8_uckso"]
 [ext_resource type="PackedScene" uid="uid://c5uiu1y2dicjl" path="res://Enemies/enemy_amoeba.tscn" id="9_t4vx2"]
+[ext_resource type="AudioStream" uid="uid://cusursihb0jl8" path="res://Audio/Music/battleThemeA.mp3" id="11_nrkb1"]
+[ext_resource type="Script" path="res://Audio/Music/snd_music.gd" id="12_gmf0u"]
 
 [sub_resource type="Resource" id="Resource_kotc6"]
 script = ExtResource("5_4njs4")
@@ -97,10 +99,18 @@ region_rect = Rect2(0, 0, 4000, 4000)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_jqi4b")]
 spawns = Array[ExtResource("5_4njs4")]([SubResource("Resource_kotc6"), SubResource("Resource_nv8o4"), SubResource("Resource_ytfpg"), SubResource("Resource_bbts6"), SubResource("Resource_fhuum"), SubResource("Resource_73p8x"), SubResource("Resource_t6gvq"), SubResource("Resource_adubo"), SubResource("Resource_0d8s1")])
-time = 239
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="ExpGem" parent="Loot" instance=ExtResource("6_de1uv")]
 position = Vector2(150, -78)
 exp_gain = 200
+
+[node name="snd_music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_nrkb1")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("12_gmf0u")
+
+[connection signal="playerdeath" from="Player" to="snd_music" method="_on_player_playerdeath"]

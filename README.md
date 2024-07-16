@@ -12,6 +12,7 @@ I am using his tutorial series (found [here](https://www.youtube.com/playlist?li
   - Level Up Menu
   - Icons for what items the player has collected
   - Win/Lose Screen 
+  - Main Menu
 - Basic Animations
   - The player will animate only while walking
   - The enemies are in a constant state of animation
@@ -39,8 +40,25 @@ I am using his tutorial series (found [here](https://www.youtube.com/playlist?li
 
 
 ## Ideas I want to Add after the tutorial
-- [ ] Ice Spear explodes into little shards on death
-- [ ] Javelin returns to the player before firing again
- - Currently, the javelin will just bounce all over the map. If you move around the map too much, the javelins will eventually be too far away to hit anything.
-- [ ] Add a new attack of "Water" (thinking like a little tidal wave)
-- [ ] An attack: "Bees"
+- New attacks
+  - [ ] "Water"
+  - [ ] "Bees"
+  - Attack Upgrades
+	- [ ] Ice spear shatters upon projectile death
+	- [ ] Javelin returns to player before launching again
+- New Items
+  - [ ] "Magnet"
+- New Characters
+  - [ ] "Frosty"
+- Miscellaneous
+  - [ ] Pause menu
+  - [ ] Enemy organization
+	- Currently, if I need to make a change to all enemies, I'd have to do it individually instead of changing one thing.
+	- I should be able to create a collective scene. The scene has all the same children (except collision shape). In each enemy's script, you can add `class_name EnemyBody` (where `EnemyBody` is the name of the collective scene.). 
+	- Change the `@onready var` for all of the ones that would need to be changed at once to reflect the change: something like `$EnemyBase/Hitbox`. 
+	- The signals would then need to be conencted via code.
+	- In the enemy.gd script, you would add `extends EnemyBody` at the top.
+- Optimizations
+  - [ ] Circle collision shapes can be more optimal than capsule
+  - [ ] Set a limit to the number of enemies that can spawn at one time (may require a backlog of enemies so that you don't miss any of the spawns you were suppsoed to spawn.)
+  - [ ] Make an enemy invisible if it is off-screen.
