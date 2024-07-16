@@ -1,9 +1,10 @@
+AudioStreamPlayer
+Button
 GridContainer
 TextureRect
 Label
 TextureProgressBar
 Node
 ColorRect
-AudioStreamPlayer
 VBoxContainer
 Panel

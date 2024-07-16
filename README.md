@@ -5,6 +5,13 @@ I have been following a tutorial series on YouTube by [Branno](https://www.youtu
 I am using his tutorial series (found [here](https://www.youtube.com/playlist?list=PLtosjGHWDab682nfZ1f6JSQ1cjap7Ieeb)) to get a feel for Godot Engine and Godot 4. I have tried to use Godot in the past, but now I am really trying to make an effort to learn it. 
 
 ## What's been implemented from the tutorial
+- The GUI
+  - Health bar
+  - Experience bar
+  - Game timer
+  - Level Up Menu
+  - Icons for what items the player has collected
+  - Win/Lose Screen 
 - Basic Animations
   - The player will animate only while walking
   - The enemies are in a constant state of animation
@@ -14,28 +21,22 @@ I am using his tutorial series (found [here](https://www.youtube.com/playlist?li
   - The enemies will constnatly walk towards the player.
   - These basic enemies deal 1 hp worth of damage as they bump into the player.
 - Basic Attacks
-- Leveling Up and choosing upgrades
-- Added a health bar and the player can now visually lose health.
-- Added a timer to show how long you have been in the game.
-- Added a GUI for what items the player currently has collected.
+  - Ice Spear
+  - Tornado
+  - Javelin
+- Basic Items
+  - Food (Heals the Player)
+  - Ring (Adds an additional bullet per shot)
+  - Tome (Makes spells larger)
+  - Armor (Grants Armor)
+  - Speed Shoes (Player moves faster)
+  - Scroll (Decreases spell cooldown)
 - Added additional enemies:
 	- Kobold (Strong)
 	- Cyclops
 	- Juggernaut
 	- Amoeba (This game's version of the Reaper)
 
-### Attack List
-- Ice Spear
-- Tornado
-- Javelin
-
-### Item List
-- Food (Heals the player)
-- Ring (Adds an additional bullet per shot)
-- Tome (Makes spells larger)
-- Armor (Grants armor)
-- Speed Shoes (Player moves faster)
-- Scroll (Decreases spell cooldown)
 
 ## Ideas I want to Add after the tutorial
 - [ ] Ice Spear explodes into little shards on death

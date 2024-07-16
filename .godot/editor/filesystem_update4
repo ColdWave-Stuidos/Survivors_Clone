@@ -3,3 +3,12 @@ res://Enemies/enemy.gd
 res://Enemies/enemy_cyclops.tscn
 res://Enemies/enemy_kobold_strong.tscn
 res://Enemies/enemy_amoeba.tscn
+res://Utility/basic_button.tscn
+res://Utility/basic_button.gd
+res://Player/player.tscn
+res://Player/player.gd
+res://Scenes/world.tscn
+res://Utility/enemy_spawner.gd
+res://Enemies/enemy_kobold_weak.tscn
+res://Utility/upgrade_db.tscn
+res://README.md

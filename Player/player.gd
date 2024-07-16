@@ -26,6 +26,12 @@ var collected_exp = 0 # How much player has collected
 @onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
 var time = 0
 
+# Death Screen
+@onready var deathPanel = get_node("%DeathPanel")
+@onready var lblResult = get_node("%lbl_result")
+@onready var sndVictory = get_node("%snd_victory")
+@onready var sndLose = get_node("%snd_lose")
+
 # Attacks
 var icespear = preload("res://Player/Attacks/ice_spear.tscn")
 var tornado = preload("res://Player/Attacks/tornado.tscn")
@@ -127,6 +133,9 @@ func _on_hurt_box_hurt(damage, _angle, _knockback): # The function still needs t
 	hp -= clamp(damage - armor, 1.0, 999) # This guarantees you will always take 1 damage.
 	healthBar.max_value = maxhp
 	healthBar.value = hp
+	
+	if hp <= 0:
+		death()
 
 # Think of this as "loading the ammo"
 func _on_ice_spear_timer_timeout():
@@ -378,3 +387,18 @@ func adjust_gui_collection(upgrade):
 					collectedWeapons.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
+
+
+func death():
+	deathPanel.visible = true
+	get_tree().paused = true
+	var tween = deathPanel.create_tween()
+	tween.tween_property(deathPanel, "position", Vector2(220, 50), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	
+	if time >= 300:
+		lblResult.text = "You Win!"
+		sndVictory.play()
+	else:
+		lblResult.text = "You Lose!"
+		sndLose.play()
