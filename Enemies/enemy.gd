@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var movement_speed = 20.0
 @export var hp = 15
 @export var experience = 1
-@export var damage = 1
+@export var enemy_damage = 1
 
 # Hitbox Stuff
 @onready var hitBox = $hitBox
@@ -38,7 +38,7 @@ signal remove_from_array(object)
 # _ready() is a godot function, and runs once at the very beginning.
 func _ready():
 	animations.play("walk")
-	hitBox.damage = damage
+	hitBox.damage = enemy_damage
 
 # Function to move the enemy towards you
 # If you underscore delta, that means you want the function to _not_ use delta.

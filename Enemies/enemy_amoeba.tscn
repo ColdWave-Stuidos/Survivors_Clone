@@ -62,7 +62,7 @@ script = ExtResource("1_ragku")
 movement_speed = 150.0
 hp = 99999
 experience = 100
-damage = 20
+enemy_damage = 20
 knockback_recovery = 99999.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

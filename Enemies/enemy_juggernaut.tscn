@@ -62,7 +62,7 @@ script = ExtResource("1_tck2f")
 movement_speed = 40.0
 hp = 300
 experience = 100
-damage = 8
+enemy_damage = 8
 knockback_recovery = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
